@@ -4,7 +4,7 @@
 
 ---
 
-- **Documentation**: [https://github.com/FernandoCelmer/api-proxy](https://github.com/FernandoCelmer/api-proxy)
+- **Documentation**: [https://fernandocelmer.github.io/api-proxy/](https://fernandocelmer.github.io/api-proxy/)
 - **Source Code**: [https://github.com/FernandoCelmer/api-proxy](https://github.com/FernandoCelmer/api-proxy)
 
 ---
