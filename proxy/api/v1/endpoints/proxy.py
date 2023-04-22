@@ -1,34 +1,35 @@
 from urllib import parse
 from fastapi import APIRouter, Request
+from proxy.core.request import BaseRequest
 
 router = APIRouter()
 
 
-@router.get("/get", include_in_schema=False)
-async def get_proxy(request: Request):
+@router.get("/proxy", include_in_schema=False)
+async def proxy(request: Request):
     """GET API Proxy"""
-    return ({"method": "POST"})
+    return await BaseRequest(request).get()
 
 
-@router.post("/post", include_in_schema=False)
+@router.post("/proxy", include_in_schema=False)
 async def post_proxy(request: Request):
     """POST Proxy"""
-    return ({"method": "POST"})
+    return await BaseRequest(request).post()
 
 
-@router.put("/put", include_in_schema=False)
+@router.put("/proxy", include_in_schema=False)
 async def put_proxy(request: Request):
     """PUT Proxy"""
-    return ({"method": "PUT"})
+    return await BaseRequest(request).put()
 
 
-@router.patch("/patch", include_in_schema=False)
+@router.patch("/proxy", include_in_schema=False)
 async def patch_proxy(request: Request):
     """PATCH Proxy"""
-    return ({"method": "PATCH"})
+    return await BaseRequest(request).patch()
 
 
-@router.delete("/delete", include_in_schema=False)
+@router.delete("/proxy", include_in_schema=False)
 async def delete_proxy(request: Request):
     """DELETE Proxy"""
-    return ({"method": "DELETE"})
+    return await BaseRequest(request).make_request()
