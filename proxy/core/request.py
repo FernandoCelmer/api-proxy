@@ -142,7 +142,7 @@ class BaseRequest:
 
     async def get(self):
         return await self.make_request()
-    
+
     async def post(self):
         self.body = await self.setup_body()
         return await self.make_request()
