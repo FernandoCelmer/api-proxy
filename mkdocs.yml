@@ -6,12 +6,15 @@ copyright: Fernando Celmer
 
 nav:
     - Home: index.md
+    - API:
+      - nav/api/swagger.md
     - Configurações:
       - nav/settings/python-virtual-environment.md
       - nav/settings/environment-variables.md
     - Monitoramento:
       - nav/monitoring/prometheus.md
-theme: 
+
+theme:
     name: material
     palette:
         primary: black
@@ -22,7 +25,7 @@ markdown_extensions:
   - pymdownx.highlight
   - codehilite
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -30,7 +33,7 @@ markdown_extensions:
 
 extra:
   social:
-    - icon: fontawesome/brands/github 
+    - icon: fontawesome/brands/github
       link: https://github.com/FernandoCelmer
-    - icon: fontawesome/brands/linkedin 
+    - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/fernando-celmer/
