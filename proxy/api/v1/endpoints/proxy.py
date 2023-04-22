@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.get("/proxy", include_in_schema=False)
 async def proxy(request: Request):
-    """GET API Proxy"""
+    """GET Proxy"""
     return await BaseRequest(request).get()
 
 
