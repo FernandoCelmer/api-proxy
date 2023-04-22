@@ -27,8 +27,10 @@ class BaseRequest:
 
     def setup_client(self):
         self.client = self.config["USERS"].get(
-            self.request.client.host)
-        
+            self.request.client.host,
+            self.client
+        )
+
     def setup_method(self):
         self.method = self.request.method
 
