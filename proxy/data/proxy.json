@@ -1,12 +1,28 @@
 {
-    "gorest": {
+    "gorest.co.in": {
         "scheme": "https",
         "host": "gorest.co.in",
         "paths": [
-            "public/v2/users",
-            "public/v2/posts",
-            "public/v2/comments",
-            "public/v2/todos"
+            {
+                "path": "/public/v2/users",
+                "max_request": 10,
+                "time_stamp": 60
+            },
+            {
+                "path": "/public/v2/posts",
+                "max_request": 5,
+                "time_stamp": 60
+            },
+            {
+                "path": "/public/v2/comments",
+                "max_request": 25,
+                "time_stamp": 60
+            },
+            {
+                "path": "/public/v2/todos",
+                "max_request": 50,
+                "time_stamp": 60
+            }
         ]
     }
 }

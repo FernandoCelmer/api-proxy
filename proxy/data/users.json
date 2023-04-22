@@ -1,14 +1,19 @@
 {
     "172.16.238.1": [
         {
-            "name": "gorest",
+            "host": "gorest.co.in",
             "paths": [
-                "/public/v2/users",
-                "/public/v2/posts",
-                "/public/v2/comments",
-                "/public/v2/todos"
-            ],
-            "max": 10
+                {
+                    "path": "/public/v2/users",
+                    "max_request": 10,
+                    "time_stamp": 1
+                },
+                {
+                    "path": "/public/v2/comments",
+                    "max_request": 50,
+                    "time_stamp": 5
+                }    
+            ]
         }
     ]
 }
