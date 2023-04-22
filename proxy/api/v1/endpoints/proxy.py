@@ -1,4 +1,3 @@
-from urllib import parse
 from fastapi import APIRouter, Request
 from proxy.core.request import BaseRequest
 
