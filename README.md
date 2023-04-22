@@ -1,7 +1,6 @@
 # api-proxy
 
 ![GitHub Org's stars](https://img.shields.io/github/stars/FernandoCelmer?label=FernandoCelmer&style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/FernandoCelmer/api-proxy?style=flat-square)
 
 ---
 
