@@ -18,7 +18,7 @@ metric = Metric()
 
 
 @app.exception_handler(HTTPException)
-async def custom_http_exception_handler(request, exc):
+async def custom_http_exception_handler(request, exception):
     method = request.method.lower()
     metric.register(
         method=method,
@@ -29,6 +29,4 @@ async def custom_http_exception_handler(request, exc):
     )
 
     return RedirectResponse(
-        url=f"/{method}?{request.url.query}",
-        headers=request.headers
-    )
+        url=f"/proxy?{request.url.query}")
