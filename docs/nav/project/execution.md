@@ -1,12 +1,12 @@
 # Execução do Projeto
 
-Para execução e teste do projeto foi configurado um ambiente pronto para utilização a partir de `conteiners`, onde são executados as duas aplicação, `API Proxy` e `Prometheus` com informações pré-carregadas.
+Para execução e teste deste projeto foi configurado um ambiente pronto para utilização a partir de `containers`, onde são executados as duas aplicações, `API Proxy` e `Prometheus` com informações pré-carregadas.
 
 ## Dependências
 
-- Git
-- Docker
-- Docker Compose
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 
 | OS         | Package Manager  | Command                                |
