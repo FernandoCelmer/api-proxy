@@ -10,7 +10,24 @@
                 },
                 {
                     "path": "/public/v2/comments",
-                    "max_request": 50,
+                    "max_request": 15,
+                    "time_stamp": 5
+                }    
+            ]
+        }
+    ],
+    "127.0.0.1": [
+        {
+            "host": "gorest.co.in",
+            "paths": [
+                {
+                    "path": "/public/v2/users",
+                    "max_request": 5,
+                    "time_stamp": 10
+                },
+                {
+                    "path": "/public/v2/comments",
+                    "max_request": 25,
                     "time_stamp": 5
                 }    
             ]
