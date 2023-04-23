@@ -1,7 +1,7 @@
-from json import loads
-from logging import info
-from os import environ, path
+import logging
 
+from json import loads
+from os import environ, path
 from proxy.core.file import File
 
 
@@ -12,20 +12,27 @@ class Settings:
             from dotenv import load_dotenv
             load_dotenv()
         except Exception as error:
-            info(str(error))
+            logging.error(error)
 
     @staticmethod
-    def load():
+    def load_data():
         """Sets up configuration for the app
         """
-
+        return {
+            "proxy": loads(File.read(path_file=environ.get("PROXY", "./proxy/data/proxy.json"))),
+            "users": loads(File.read(path_file=environ.get("USERS", "./proxy/data/users.json"))),
+        }
+    
+    @staticmethod
+    def load_variables():
+        """Sets up configuration for the app
+        """
         variables = {
             "DEBUG": bool(environ.get("DEBUG", 1)),
             "ENVIRONMENT": environ.get("ENVIRONMENT", 'development'),
-            "DATABASE_URL": environ.get("DATABASE_URL", "sqlite:///./sql_app.db"),
             "BASE_DIR": path.abspath(path.dirname(__file__)),
-            "PROXY": loads(File.read(path_file="./proxy/data/proxy.json")),
-            "USERS": loads(File.read(path_file="./proxy/data/users.json"))
+            "URL_PROYX": environ.get("URL_PROMETHEUS", 'http://172.16.238.10:8000'),
+            "URL_PROMETHEUS": environ.get("URL_PROMETHEUS", 'http://172.16.238.11:9090'),
         }
 
         for config in variables:
