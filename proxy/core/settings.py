@@ -22,7 +22,7 @@ class Settings:
             "proxy": loads(File.read(path_file=environ.get("PROXY", "./proxy/data/proxy.json"))),
             "users": loads(File.read(path_file=environ.get("USERS", "./proxy/data/users.json"))),
         }
-    
+
     @staticmethod
     def load_variables():
         """Sets up configuration for the app
