@@ -27,6 +27,10 @@ Instruções:
 | ------------------------  | ------- | ------------------------------------------------------|
 | DEBUG                     | Integer | 0 - 1                                                 |
 | ENVIRONMENT               | String  | development - sandbox - production                    |
+| PROXY                     | String  | ./proxy/data/proxy.json                               |
+| USERS                     | String  | ./proxy/data/users.json                               |
+| URL_PROYX                 | String  | http://127.0.0.1:8000                             |
+| URL_PROMETHEUS            | String  | http://127.0.0.1:9090                             |
 
 ## Variáveis -> prometheus
 
