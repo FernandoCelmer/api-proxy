@@ -1,5 +1,7 @@
 # Execução
 
+![](image_execution.png)
+
 Para a execução do projeto foi configurado um ambiente pronto para utilização a partir de `containers`, onde são executados as duas aplicações, `API Proxy` e `Prometheus` com informações pré-carregadas.
 
 ## Dependências
