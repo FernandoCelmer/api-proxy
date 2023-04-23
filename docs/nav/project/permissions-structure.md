@@ -22,6 +22,11 @@ Mas para não deixar muito complexo a parte inicial do projeto foi definido dent
                 "time_stamp": 60
             },
             {
+                "path": "/public/v2/users/{ID}",
+                "max_request": 10,
+                "time_stamp": 60
+            },
+            {
                 "path": "/public/v2/posts",
                 "max_request": 5,
                 "time_stamp": 60
@@ -60,6 +65,11 @@ Este arquivo de configuração tem como principal função armazenar informaçõ
                     "time_stamp": 1
                 },
                 {
+                    "path": "/public/v2/users/{ID}",
+                    "max_request": 10,
+                    "time_stamp": 60
+                },
+                {
                     "path": "/public/v2/comments",
                     "max_request": 15,
                     "time_stamp": 5
@@ -77,6 +87,11 @@ Este arquivo de configuração tem como principal função armazenar informaçõ
                     "time_stamp": 10
                 },
                 {
+                    "path": "/public/v2/users/{ID}",
+                    "max_request": 10,
+                    "time_stamp": 60
+                },
+                {
                     "path": "/public/v2/comments",
                     "max_request": 25,
                     "time_stamp": 5
@@ -85,7 +100,6 @@ Este arquivo de configuração tem como principal função armazenar informaçõ
         }
     ]
 }
-
 ```
 
 Este arquivo contém informações relacionadas ao `Cliente` relacionamento o mesmo ao `Path` e quantidade máxima permitida.

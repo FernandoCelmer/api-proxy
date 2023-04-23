@@ -4,7 +4,7 @@
 sequenceDiagram
     Cliente->>+Proxy-Endpoint: Realiza uma operação HTTP no [Proxy]
     Proxy-Endpoint->>+Prometheus: [Proxy] busca informações de IP/Path
-    Prometheus-->>-Proxy-Endpoint: Retornar informações de IP/Path
+    Prometheus-->>-Proxy-Endpoint: Responde informações de IP/Path
     Proxy-Endpoint->>+Target-Endpoint: Realiza uma operação HTTP no [Target]
     Target-Endpoint-->>-Proxy-Endpoint: [Target] responde solicitação
     Proxy-Endpoint-->>-Cliente: [Proxy] responde solicitação
@@ -16,11 +16,11 @@ sequenceDiagram
 
 ## Resumo
 
-Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solcitações HTTP e no armazenamento de métricas de usuários.
+Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solicitações HTTP e no armazenamento de métricas de usuários.
 
-### API-Proxy:
+### API Proxy:
 
-Responsável pela maior parte das operações envolvendo o `cliente` final que pode tanto serviço internos como externos. Esta API irá receber qualquer solicitação HTTP do `cliente` e realizará o processamento do mesmo que envolve:
+Responsável pela maior parte das operações envolvendo o `cliente` final que pode tanto ser serviços internos como externos. Esta API irá receber qualquer solicitação HTTP do `cliente` e realizará o processamento do mesmo que envolve:
 
 - Validação de `Path`/`Endpoint` se existe nas configurações.
 - Validação de `IP` referente ao `cliente` que está fazendo esta operação.
