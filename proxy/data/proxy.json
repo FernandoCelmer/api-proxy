@@ -9,6 +9,11 @@
                 "time_stamp": 60
             },
             {
+                "path": "/public/v2/users/{ID}",
+                "max_request": 10,
+                "time_stamp": 60
+            },
+            {
                 "path": "/public/v2/posts",
                 "max_request": 5,
                 "time_stamp": 60
