@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/project/tesnting/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/FernandoCelmer/api-proxy/nav/settings/environment-variables/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
