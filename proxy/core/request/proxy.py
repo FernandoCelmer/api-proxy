@@ -6,8 +6,9 @@ import logging
 
 from urllib.parse import parse_qs, urlsplit
 from fastapi.responses import JSONResponse, Response
-from proxy.core.request.base import BaseRequest
-from proxy.core.request.prometheus import RequestPrometheus
+
+from proxy.core.error import ErrorValidateProxy
+from proxy.core.request import BaseRequest, RequestPrometheus
 from proxy.core.settings import Settings
 
 
@@ -36,19 +37,37 @@ class RequestProxy(BaseRequest):
             url=self.request.headers.get("referer"))
 
     def setup_url_target(self):
+
+        def set_url_target(path: str):
+            if self.proxy:
+                self.url_target = "{scheme}://{host}{path}".format(
+                    scheme=self.proxy.get("scheme"),
+                    host=self.proxy.get("host"),
+                    path=path
+                )
+
         for client in self.client:
             for path in client.get("paths"):
+
+                # Validation of 'Path' with 'ID'.
+                url_id = urlsplit(self.url_proxy.path).path.split('/')[-1].split('.')[0]
+                if url_id:
+                    try:
+                        url_path = path.get("path").format(ID=url_id)
+                        if self.url_proxy.path == url_path:
+                            self.proxy = self.data["proxy"].get(client.get("host"))
+                            self.client_path = path
+                            set_url_target(path=url_path)
+                            break
+                    except Exception:
+                        pass
+
+                # Full 'Path' validation.
                 if self.url_proxy.path == path.get("path"):
                     self.proxy = self.data["proxy"].get(client.get("host"))
                     self.client_path = path
+                    set_url_target(path=path.get("path"))
                     break
-
-        if self.proxy:
-            self.url_target = "{scheme}://{host}{path}".format(
-                scheme=self.proxy.get("scheme"),
-                host=self.proxy.get("host"),
-                path=path.get("path")
-            )
 
     def setup_params(self):
         dict_params = parse_qs(self.url_proxy.query)
@@ -87,7 +106,7 @@ class RequestProxy(BaseRequest):
 
     async def validate(self):
         if not self.client_path:
-            return Response(status_code=401)
+            raise ErrorValidateProxy()
 
         try:
             action = RequestPrometheus()
@@ -102,17 +121,17 @@ class RequestProxy(BaseRequest):
 
                 # Validation by maximum quantity linked to the user - file users.json
                 if value_request >= self.client_path.get("max_request"):
-                    return Response(status_code=401)
+                    raise ErrorValidateProxy()
 
                 # Validation by maximum quantity linked to the proxy - file proxy.json
                 for proxy_path in self.proxy["paths"]:
                     if proxy_path == proxy_path.get("path"):
                         if value_request >= proxy_path.get("max_request"):
-                            return Response(status_code=401)
+                            raise ErrorValidateProxy()
 
         except Exception as error:
             logging.error(error)
-            return Response(status_code=401)
+            raise ErrorValidateProxy()
 
     async def setup_body(self):
         try:
@@ -121,8 +140,10 @@ class RequestProxy(BaseRequest):
             logging.error(error)
 
     async def proxy_request(self):
-        if await self.validate():
-            return await self.validate()
+        try:
+            await self.validate()
+        except ErrorValidateProxy:
+            return Response(status_code=401)
 
         try:
             base_response = await self.make_request()
