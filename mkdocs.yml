@@ -8,9 +8,10 @@ nav:
     - Home: index.md
     - Projeto:
       - nav/project/flow.md
-      - nav/project/execution.md
       - nav/project/permissions-structure.md
       - nav/project/technologies.md
+      - nav/project/execution.md
+      - nav/project/tesnting.md
     - Documentação:
       - nav/documentation/mkdocs.md
       - nav/documentation/swagger.md
