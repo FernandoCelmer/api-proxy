@@ -1,4 +1,4 @@
-![](/docs/api-proxy.jpg)
+![](/docs/nav/project/api-proxy.jpg)
 
 ![GitHub Org's stars](https://img.shields.io/github/stars/FernandoCelmer?label=FernandoCelmer&style=flat-square)
 

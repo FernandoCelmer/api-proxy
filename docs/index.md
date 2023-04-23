@@ -1,6 +1,4 @@
-![](api-proxy.jpg)
-
-![GitHub Org's stars](https://img.shields.io/github/stars/FernandoCelmer?label=FernandoCelmer&style=flat-square)
+# API Proxy
 
 ---
 

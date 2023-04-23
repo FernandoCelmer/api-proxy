@@ -4,7 +4,7 @@
 informações das métricas são armazenadas com o carimbo de data/hora em que foram registradas,
 juntamente com pares chave-valor opcionais chamados rótulos.
 
-## Painel
+## Acesso
 
 - Link: [http://127.0.0.1:9090/](http://127.0.0.1:9090/)
 
