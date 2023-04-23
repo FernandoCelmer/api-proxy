@@ -6,12 +6,37 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/FernandoCelmer/api-proxy/nav/api/swagger/</loc>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/documentation/mkdocs/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/documentation/swagger/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/FernandoCelmer/api-proxy/nav/monitoring/prometheus/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/project/execution/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/project/flow/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/project/permissions-structure/</loc>
+         <lastmod>2023-04-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/FernandoCelmer/api-proxy/nav/project/technologies/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
