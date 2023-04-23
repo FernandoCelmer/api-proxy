@@ -597,7 +597,7 @@
 
 <h1 id="estrutura-de-permissoes">Estrutura de Permissões</h1>
 <p>Inicialmente para este projeto foi pensado em não usar um banco de dados relacional como <code>MySQL</code>, já pensando nos problemas comuns que no futuro pederiam acontecer como a questão do <code>Deadlock</code> (Deadlock é o termo utilizado para designar um erro que acontece quando duas sessões entram numa situação de conflito, cada qual aguardando pela liberação de bloqueios que a outra sessão mantém) com as possíveis milhares de solicitações a API por segundo.</p>
-<p>Uma das alteranativas pensadas ao banco de dados <code>MySQL</code> foi o <code>MongoDB</code> que é um banco de dados não relacional, para suprir a demanda de armazenamento de informações de <code>Proxys</code>, <code>Clientes</code> e <code>Permissões</code>.</p>
+<p>Uma das alternativas pensadas ao banco de dados <code>MySQL</code> foi o <code>MongoDB</code> que é um banco de dados não relacional, para suprir a demanda de armazenamento de informações de <code>Proxys</code>, <code>Clientes</code> e <code>Permissões</code>.</p>
 <p>Mas para não deixar muito complexo a parte inicial do projeto foi definido dentro do projeto dois arquivos de configuração, um para os <code>Proxys</code> e o outro para o <code>Cliente</code>, esse foi um modo de pelo menos padronizar uma estrura de permissões que podem no futuro ser reutilizadas ou integradas com outros tipos de base de dados.</p>
 <h2 id="configuracao-proxy">Configuração: Proxy</h2>
 <p><strong>Path</strong>: <code>api-proxy/proxy/data/proxy.json</code></p>
@@ -685,7 +685,7 @@
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Este arquivo contém informações relacionadas ao <code>Cliente</code> relacionamento o mesmo ao <code>Path</code> e quantidade máxima permitida.</p>
+<p>Este arquivo contém informações relacionadas ao <code>Cliente</code>, <code>Path</code> e quantidade máxima permitida.</p>
 
 
 
