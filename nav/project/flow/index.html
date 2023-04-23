@@ -301,7 +301,7 @@
         
           <li class="md-nav__item">
   <a href="#api-proxy" class="md-nav__link">
-    API-Proxy:
+    API Proxy:
   </a>
   
 </li>
@@ -586,7 +586,7 @@
         
           <li class="md-nav__item">
   <a href="#api-proxy" class="md-nav__link">
-    API-Proxy:
+    API Proxy:
   </a>
   
 </li>
@@ -625,7 +625,7 @@
 <pre class="mermaid"><code>sequenceDiagram
     Cliente-&gt;&gt;+Proxy-Endpoint: Realiza uma operação HTTP no [Proxy]
     Proxy-Endpoint-&gt;&gt;+Prometheus: [Proxy] busca informações de IP/Path
-    Prometheus--&gt;&gt;-Proxy-Endpoint: Retornar informações de IP/Path
+    Prometheus--&gt;&gt;-Proxy-Endpoint: Responde informações de IP/Path
     Proxy-Endpoint-&gt;&gt;+Target-Endpoint: Realiza uma operação HTTP no [Target]
     Target-Endpoint--&gt;&gt;-Proxy-Endpoint: [Target] responde solicitação
     Proxy-Endpoint--&gt;&gt;-Cliente: [Proxy] responde solicitação
@@ -634,9 +634,9 @@
         Proxy-Endpoint--&gt;&gt;-Prometheus: [Proxy] responde solicitação
     end</code></pre>
 <h2 id="resumo">Resumo</h2>
-<p>Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solcitações HTTP e no armazenamento de métricas de usuários.</p>
-<h3 id="api-proxy">API-Proxy:</h3>
-<p>Responsável pela maior parte das operações envolvendo o <code>cliente</code> final que pode tanto serviço internos como externos. Esta API irá receber qualquer solicitação HTTP do <code>cliente</code> e realizará o processamento do mesmo que envolve:</p>
+<p>Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solicitações HTTP e no armazenamento de métricas de usuários.</p>
+<h3 id="api-proxy">API Proxy:</h3>
+<p>Responsável pela maior parte das operações envolvendo o <code>cliente</code> final que pode tanto ser serviços internos como externos. Esta API irá receber qualquer solicitação HTTP do <code>cliente</code> e realizará o processamento do mesmo que envolve:</p>
 <ul>
 <li>Validação de <code>Path</code>/<code>Endpoint</code> se existe nas configurações.</li>
 <li>Validação de <code>IP</code> referente ao <code>cliente</code> que está fazendo esta operação.<ul>
