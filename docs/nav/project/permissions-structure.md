@@ -2,7 +2,7 @@
 
 Inicialmente para este projeto foi pensado em não usar um banco de dados relacional como `MySQL`, já pensando nos problemas comuns que no futuro pederiam acontecer como a questão do `Deadlock` (Deadlock é o termo utilizado para designar um erro que acontece quando duas sessões entram numa situação de conflito, cada qual aguardando pela liberação de bloqueios que a outra sessão mantém) com as possíveis milhares de solicitações a API por segundo.
 
-Uma das alteranativas pensadas ao banco de dados `MySQL` foi o `MongoDB` que é um banco de dados não relacional, para suprir a demanda de armazenamento de informações de `Proxys`, `Clientes` e `Permissões`.
+Uma das alternativas pensadas ao banco de dados `MySQL` foi o `MongoDB` que é um banco de dados não relacional, para suprir a demanda de armazenamento de informações de `Proxys`, `Clientes` e `Permissões`.
 
 Mas para não deixar muito complexo a parte inicial do projeto foi definido dentro do projeto dois arquivos de configuração, um para os `Proxys` e o outro para o `Cliente`, esse foi um modo de pelo menos padronizar uma estrura de permissões que podem no futuro ser reutilizadas ou integradas com outros tipos de base de dados.
 
@@ -102,4 +102,4 @@ Este arquivo de configuração tem como principal função armazenar informaçõ
 }
 ```
 
-Este arquivo contém informações relacionadas ao `Cliente` relacionamento o mesmo ao `Path` e quantidade máxima permitida.
+Este arquivo contém informações relacionadas ao `Cliente`, `Path` e quantidade máxima permitida.
