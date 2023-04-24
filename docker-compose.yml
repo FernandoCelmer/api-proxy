@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   proxy-api:
     build: ./proxy/
     volumes: 
@@ -11,13 +12,15 @@ services:
         DEBUG: 1
         ENVIRONMENT: development
     networks:
-      example-network:
+      node-network:
         ipv4_address: 172.16.238.10
+    depends_on:
+      - mongodb
 
-  app-prometheus:
+  prometheus:
     image: prom/prometheus:latest
     restart: unless-stopped
-    container_name: app-prometheus
+    container_name: prometheus
     ports:
       - 9090:9090
     volumes:
@@ -25,12 +28,32 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
-      example-network:
+      node-network:
         ipv4_address: 172.16.238.11
 
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    logging:
+      options:
+          max-size: 1g
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
+    networks:
+      node-network:
+        ipv4_address: 172.16.238.12
+
 networks:
-  example-network:
-    name: example-network
+  node-network:
+    name: node-network
     driver: bridge
     ipam:
       driver: default
