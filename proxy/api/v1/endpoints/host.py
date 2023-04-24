@@ -3,7 +3,7 @@ from fastapi import APIRouter, Request
 router = APIRouter()
 
 
-@router.get("/client", include_in_schema=True)
+@router.get("/host", include_in_schema=True)
 async def client(request: Request):
     """Response IP Address"""
     return {

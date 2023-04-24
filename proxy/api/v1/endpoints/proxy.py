@@ -1,34 +1,22 @@
-from fastapi import APIRouter, Request
-from proxy.core.request.proxy import RequestProxy
+from fastapi import APIRouter, Depends
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import Response
+
+from proxy.core.database.mongodb import get_mongodb
+from proxy.schemas.proxy import Schema, SchemaBase
+
 
 router = APIRouter()
 
 
-@router.get("/proxy", include_in_schema=False)
-async def proxy(request: Request):
-    """GET Proxy"""
-    return await RequestProxy(request).get()
+@router.post("/proxy", response_model=SchemaBase, status_code=201)
+async def create(proxy: Schema, client=Depends(get_mongodb)):
+    proxy = jsonable_encoder(proxy)
 
-
-@router.post("/proxy", include_in_schema=False)
-async def post_proxy(request: Request):
-    """POST Proxy"""
-    return await RequestProxy(request).post()
-
-
-@router.put("/proxy", include_in_schema=False)
-async def put_proxy(request: Request):
-    """PUT Proxy"""
-    return await RequestProxy(request).put()
-
-
-@router.patch("/proxy", include_in_schema=False)
-async def patch_proxy(request: Request):
-    """PATCH Proxy"""
-    return await RequestProxy(request).patch()
-
-
-@router.delete("/proxy", include_in_schema=False)
-async def delete_proxy(request: Request):
-    """DELETE Proxy"""
-    return await RequestProxy(request).delete()
+    try:
+        collection = client.proxy[proxy.get("host")]
+        await collection.insert_one(proxy)
+    except Exception:
+        return Response(status_code=422)
+    
+    return proxy
