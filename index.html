@@ -246,36 +246,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contexto-do-projeto" class="md-nav__link">
-    Contexto do Projeto
+  <a href="#sumario" class="md-nav__link">
+    Sumário
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#problema" class="md-nav__link">
-    Problema
+  <a href="#melhorias" class="md-nav__link">
+    Melhorias
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucao" class="md-nav__link">
-    Solução
+  <a href="#padroes-de-commits" class="md-nav__link">
+    Padrões de Commits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit-style" class="md-nav__link">
-    Commit Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    License
+  <a href="#licenca" class="md-nav__link">
+    Licença
   </a>
   
 </li>
@@ -379,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="nav/project/tesnting/" class="md-nav__link">
+      <a href="nav/project/test/" class="md-nav__link">
         Teste
       </a>
     </li>
@@ -595,36 +588,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contexto-do-projeto" class="md-nav__link">
-    Contexto do Projeto
+  <a href="#sumario" class="md-nav__link">
+    Sumário
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#problema" class="md-nav__link">
-    Problema
+  <a href="#melhorias" class="md-nav__link">
+    Melhorias
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solucao" class="md-nav__link">
-    Solução
+  <a href="#padroes-de-commits" class="md-nav__link">
+    Padrões de Commits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#commit-style" class="md-nav__link">
-    Commit Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    License
+  <a href="#licenca" class="md-nav__link">
+    Licença
   </a>
   
 </li>
@@ -650,28 +636,42 @@
 <h1 id="api-proxy">API Proxy</h1>
 <hr />
 <ul>
-<li><strong>Documentation</strong>: <a href="https://fernandocelmer.github.io/api-proxy/">https://fernandocelmer.github.io/api-proxy/</a></li>
-<li><strong>Source Code</strong>: <a href="https://github.com/FernandoCelmer/api-proxy">https://github.com/FernandoCelmer/api-proxy</a></li>
+<li><strong>Documentação</strong>: <a href="https://fernandocelmer.github.io/api-proxy/">https://fernandocelmer.github.io/api-proxy/</a></li>
+<li><strong>Código Fonte</strong>: <a href="https://github.com/FernandoCelmer/api-proxy">https://github.com/FernandoCelmer/api-proxy</a></li>
 </ul>
 <hr />
-<h2 id="contexto-do-projeto">Contexto do Projeto</h2>
-<p>Uma empresa possui atualmente +30.000 servidores onde suas aplicações são executadas. Elas comunicam-se entre si através de <code>APIs</code>, sendo que algumas possuem ainda acesso externo <strong>(api.empresa.com)</strong>.</p>
-<h2 id="problema">Problema</h2>
-<p>Um dos problemas é a dificuldade para medir e controlar interconexões entre as <code>APIs</code>.</p>
-<h2 id="solucao">Solução</h2>
-<p>Implementação de um <code>proxy de apis</code> com os seguintes requisitos:</p>
+<h2 id="sumario">Sumário</h2>
 <ul>
-<li>Executar a função de proxy sobre o domínio <strong>api.empresa.com</strong>, isto é, ele deve agir como um intermediário para as requisições dos clientes, enviando-as à <strong>api.empresa.com</strong>.</li>
-<li>Deverá permitir o controle das quantidades máximas de requisições por:<ul>
-<li>IP de origem</li>
-<li>Path de destino</li>
-<li>Combinações de ambos</li>
+<li>Projeto<ul>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/project/flow/">Fluxo do Projeto</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/project/permissions-structure/">Estrutura de Permissões</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/project/technologies/">Tecnologias e Ferramentas</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/project/execution/">Execução</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/project/test/">Teste</a></li>
 </ul>
 </li>
-<li>Deve armazenar (e também permitir que se consulte) as estatísticas de uso do proxy.</li>
-<li>O proxy (como solução) deverá poder superar 50.000 requisições por segundo.</li>
+<li>Documentação<ul>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/documentation/mkdocs/">MkDocs</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/documentation/swagger/">Swagger</a></li>
 </ul>
-<h2 id="commit-style">Commit Style</h2>
+</li>
+<li>Configurações<ul>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/settings/python-virtual-environment/">Ambiente Virtual Python</a></li>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/settings/environment-variables/">Variaveis de Ambiente</a></li>
+</ul>
+</li>
+<li>Monitoramento<ul>
+<li><a href="https://fernandocelmer.github.io/api-proxy/nav/monitoring/prometheus/">Prometheus</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="melhorias">Melhorias</h2>
+<ul>
+<li><a href="https://github.com/FernandoCelmer/api-proxy/issues/3">📌 ISSUE-3: Add Docstring to classes and functions to improve understanding</a></li>
+<li><a href="https://github.com/FernandoCelmer/api-proxy/issues/2">📌 ISSUE-2: Create unit tests</a></li>
+<li><a href="https://github.com/FernandoCelmer/api-proxy/issues/1">📌 ISSUE-1: Implement required features for MongoDB database</a></li>
+</ul>
+<h2 id="padroes-de-commits">Padrões de Commits</h2>
 <ul>
 <li>⚙️ FEATURE</li>
 <li>📝 PEP8</li>
@@ -683,8 +683,8 @@
 <li>⬆️ CI/CD</li>
 <li>⚠️ SECURITY</li>
 </ul>
-<h2 id="license">License</h2>
-<p>This project is licensed under the terms of the MIT license.</p>
+<h2 id="licenca">Licença</h2>
+<p>Este projeto é licenciado sob os termos da licença MIT.</p>
 
 
 

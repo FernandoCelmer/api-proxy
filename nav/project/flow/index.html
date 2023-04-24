@@ -375,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tesnting/" class="md-nav__link">
+      <a href="../test/" class="md-nav__link">
         Teste
       </a>
     </li>
@@ -648,9 +648,9 @@
         Proxy-Endpoint--&gt;&gt;-Prometheus: [Proxy] responde solicitação
     end</code></pre>
 <h2 id="resumo">Resumo</h2>
-<p>Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solicitações HTTP e no armazenamento de métricas de usuários.</p>
+<p>Basicamente o projeto todo se resume na comunicação entre duas aplicações que se dividem entre o processamento de solicitações <code>HTTP</code> e no armazenamento de métricas de usuários.</p>
 <h3 id="api-proxy">API Proxy:</h3>
-<p>Responsável pela maior parte das operações envolvendo o <code>cliente</code> final que pode tanto ser serviços internos como externos. Esta API irá receber qualquer solicitação HTTP do <code>cliente</code> e realizará o processamento do mesmo que envolve:</p>
+<p>Responsável pela maior parte das operações envolvendo o <code>cliente</code> final que pode tanto ser serviços internos como externos. Esta <code>API</code> irá receber qualquer solicitação <code>HTTP</code> do <code>cliente</code> e realizará o processamento do mesmo que envolve:</p>
 <ul>
 <li>Validação de <code>Path</code>/<code>Endpoint</code> se existe nas configurações.</li>
 <li>Validação de <code>IP</code> referente ao <code>cliente</code> que está fazendo esta operação.<ul>
@@ -662,8 +662,8 @@
 </li>
 </ul>
 <h3 id="prometheus">Prometheus</h3>
-<p>Responsável por fornecer a estrutura de armazenamento e plotagem de dados referente as solicitações HTTP do <code>Proxy</code>. Com o <code>Prometheus</code> é possível de forma bastante fácil e rápida visualizar os dados através de um dashboard e implementar integrações com outras plataformas através da API. </p>
-<p>Para manter os dados atualizados a aplicação do Promotheus realiza solicitações HTTP ao <code>Proxy</code> de tempos em tempos para buscar as últimas métricas. O tempo entre cada solicitação é totalmente configurável, atualmente para este projeto está definido por padrão 15 segundos.</p>
+<p>Responsável por fornecer a estrutura de armazenamento e plotagem de dados referente as solicitações HTTP do <code>Proxy</code>. Com o <code>Prometheus</code> é possível de forma bastante fácil e rápida visualizar os dados através de um dashboard e implementar integrações com outras plataformas através da <code>API</code>. </p>
+<p>Para manter os dados atualizados o <code>Promotheus</code> realiza solicitações HTTP ao <code>Proxy</code> de tempos em tempos para buscar as últimas métricas. O tempo entre cada solicitação é totalmente configurável, atualmente para este projeto está definido por padrão 15 segundos.</p>
 
 
 

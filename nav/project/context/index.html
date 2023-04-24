@@ -8,20 +8,16 @@
       
       
       
-        <link rel="canonical" href="https://github.com/FernandoCelmer/api-proxy/nav/project/permissions-structure/">
+        <link rel="canonical" href="https://github.com/FernandoCelmer/api-proxy/nav/project/context/">
       
       
-        <link rel="prev" href="../flow/">
-      
-      
-        <link rel="next" href="../technologies/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>Estrutura de Permissões - API Proxy</title>
+        <title>Contexto do Projeto - API Proxy</title>
       
     
     
@@ -69,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#estrutura-de-permissoes" class="md-skip">
+        <a href="#contexto-do-projeto" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Estrutura de Permissões
+              Contexto do Projeto
             
           </span>
         </div>
@@ -227,16 +223,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
       
       
       
@@ -245,7 +239,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Projeto
@@ -270,59 +264,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Estrutura de Permissões
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../permissions-structure/" class="md-nav__link">
         Estrutura de Permissões
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuracao-proxy" class="md-nav__link">
-    Configuração: Proxy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracao-client" class="md-nav__link">
-    Configuração: Client
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -578,15 +524,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuracao-proxy" class="md-nav__link">
-    Configuração: Proxy
+  <a href="#problema" class="md-nav__link">
+    Problema
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracao-client" class="md-nav__link">
-    Configuração: Client
+  <a href="#solucao" class="md-nav__link">
+    Solução
   </a>
   
 </li>
@@ -609,97 +555,23 @@
   
 
 
-<h1 id="estrutura-de-permissoes">Estrutura de Permissões</h1>
-<p>Inicialmente para este projeto foi pensado em não usar um banco de dados relacional como <code>MySQL</code>, já pensando nos problemas comuns que no futuro pederiam acontecer como a questão do <code>Deadlock</code> (Deadlock é o termo utilizado para designar um erro que acontece quando duas sessões entram numa situação de conflito, cada qual aguardando pela liberação de bloqueios que a outra sessão mantém) com as possíveis milhares de solicitações a API por segundo.</p>
-<p>Uma das alternativas pensadas ao banco de dados <code>MySQL</code> foi o <code>MongoDB</code> que é um banco de dados não relacional, para suprir a demanda de armazenamento de informações de <code>Proxys</code>, <code>Clientes</code> e <code>Permissões</code>.</p>
-<p>Mas para não deixar muito complexo a parte inicial do projeto foi definido dentro do projeto dois arquivos de configuração, um para os <code>Proxys</code> e o outro para o <code>Cliente</code>, esse foi um modo de pelo menos padronizar uma estrura de permissões que podem no futuro ser reutilizadas ou integradas com outros tipos de base de dados.</p>
-<h2 id="configuracao-proxy">Configuração: Proxy</h2>
-<p><strong>Path</strong>: <code>api-proxy/proxy/data/proxy.json</code></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;gorest.co.in&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gorest.co.in&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users/{ID}&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/posts&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/comments&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/todos&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Este arquivo de configuração tem como principal função armazenar informações de <code>APIs</code> que o <code>Proxy</code> irá prover suporte a redirecionamento. É uma estrutura com informações básicas realizar as devidas operações.</p>
-<h2 id="configuracao-client">Configuração: Client</h2>
-<p><strong>Path</strong>: <code>api-proxy/proxy/data/users.json</code></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;172.16.238.1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gorest.co.in&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users/{ID}&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/comments&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">                </span><span class="p">}</span><span class="w">    </span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;127.0.0.1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gorest.co.in&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/users/{ID}&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/public/v2/comments&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;max_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">                </span><span class="p">}</span><span class="w">    </span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Este arquivo contém informações relacionadas ao <code>Cliente</code>, <code>Path</code> e quantidade máxima permitida.</p>
+<h1 id="contexto-do-projeto">Contexto do Projeto</h1>
+<p>Uma empresa possui atualmente +30.000 servidores onde suas aplicações são executadas. Elas comunicam-se entre si através de <code>APIs</code>, sendo que algumas possuem ainda acesso externo <strong>(api.empresa.com)</strong>.</p>
+<h2 id="problema">Problema</h2>
+<p>Um dos problemas é a dificuldade para medir e controlar interconexões entre as <code>APIs</code>.</p>
+<h2 id="solucao">Solução</h2>
+<p>Implementação de um <code>Proxy de APIs</code> com os seguintes requisitos:</p>
+<ul>
+<li>Executar a função de proxy sobre o domínio <strong>api.empresa.com</strong>, isto é, ele deve agir como um intermediário para as requisições dos clientes, enviando-as à <strong>api.empresa.com</strong>.</li>
+<li>Deverá permitir o controle das quantidades máximas de requisições por:<ul>
+<li>IP de origem</li>
+<li>Path de destino</li>
+<li>Combinações de ambos</li>
+</ul>
+</li>
+<li>Deve armazenar (e também permitir que se consulte) as estatísticas de uso do proxy.</li>
+<li>O proxy (como solução) deverá poder superar 50.000 requisições por segundo.</li>
+</ul>
 
 
 
