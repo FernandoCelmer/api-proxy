@@ -1,6 +1,7 @@
 version: "3.8"
 
 services:
+
   proxy-api:
     build: ./proxy/
     volumes: 
@@ -11,13 +12,13 @@ services:
         DEBUG: 1
         ENVIRONMENT: development
     networks:
-      example-network:
+      node-network:
         ipv4_address: 172.16.238.10
 
-  app-prometheus:
+  prometheus:
     image: prom/prometheus:latest
     restart: unless-stopped
-    container_name: app-prometheus
+    container_name: prometheus
     ports:
       - 9090:9090
     volumes:
@@ -25,12 +26,12 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
-      example-network:
+      node-network:
         ipv4_address: 172.16.238.11
 
 networks:
-  example-network:
-    name: example-network
+  node-network:
+    name: node-network
     driver: bridge
     ipam:
       driver: default
