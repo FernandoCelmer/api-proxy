@@ -11,7 +11,7 @@ nav:
       - nav/project/permissions-structure.md
       - nav/project/technologies.md
       - nav/project/execution.md
-      - nav/project/tesnting.md
+      - nav/project/test.md
     - Documentação:
       - nav/documentation/mkdocs.md
       - nav/documentation/swagger.md
