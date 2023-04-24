@@ -2,32 +2,35 @@
 
 ---
 
-- **Documentation**: [https://fernandocelmer.github.io/api-proxy/](https://fernandocelmer.github.io/api-proxy/)
-- **Source Code**: [https://github.com/FernandoCelmer/api-proxy](https://github.com/FernandoCelmer/api-proxy)
+- **Documentação**: [https://fernandocelmer.github.io/api-proxy/](https://fernandocelmer.github.io/api-proxy/)
+- **Código Fonte**: [https://github.com/FernandoCelmer/api-proxy](https://github.com/FernandoCelmer/api-proxy)
 
 ---
 
-## Contexto do Projeto
+## Sumário
 
-Uma empresa possui atualmente +30.000 servidores onde suas aplicações são executadas. Elas comunicam-se entre si através de `APIs`, sendo que algumas possuem ainda acesso externo **(api.empresa.com)**.
+- Projeto
+    - [Fluxo do Projeto](https://fernandocelmer.github.io/api-proxy/nav/project/flow/)
+    - [Estrutura de Permissões](https://fernandocelmer.github.io/api-proxy/nav/project/permissions-structure/)
+    - [Tecnologias e Ferramentas](https://fernandocelmer.github.io/api-proxy/nav/project/technologies/)
+    - [Execução](https://fernandocelmer.github.io/api-proxy/nav/project/execution/)
+    - [Teste](https://fernandocelmer.github.io/api-proxy/nav/project/test/)
+- Documentação
+    - [MkDocs](https://fernandocelmer.github.io/api-proxy/nav/documentation/mkdocs/)
+    - [Swagger](https://fernandocelmer.github.io/api-proxy/nav/documentation/swagger/)
+- Configurações
+    - [Ambiente Virtual Python](https://fernandocelmer.github.io/api-proxy/nav/settings/python-virtual-environment/)
+    - [Variaveis de Ambiente](https://fernandocelmer.github.io/api-proxy/nav/settings/environment-variables/)
+- Monitoramento
+    - [Prometheus](https://fernandocelmer.github.io/api-proxy/nav/monitoring/prometheus/)
 
-## Problema
+## Melhorias
 
-Um dos problemas é a dificuldade para medir e controlar interconexões entre as `APIs`.
+- [📌 ISSUE-3: Add Docstring to classes and functions to improve understanding](https://github.com/FernandoCelmer/api-proxy/issues/3)
+- [📌 ISSUE-2: Create unit tests](https://github.com/FernandoCelmer/api-proxy/issues/2)
+- [📌 ISSUE-1: Implement required features for MongoDB database](https://github.com/FernandoCelmer/api-proxy/issues/1)
 
-## Solução
-
-Implementação de um `proxy de apis` com os seguintes requisitos:
-
--  Executar a função de proxy sobre o domínio **api.empresa.com**, isto é, ele deve agir como um intermediário para as requisições dos clientes, enviando-as à **api.empresa.com**.
-- Deverá permitir o controle das quantidades máximas de requisições por:
-    - IP de origem
-    - Path de destino
-    - Combinações de ambos
-- Deve armazenar (e também permitir que se consulte) as estatísticas de uso do proxy.
-- O proxy (como solução) deverá poder superar 50.000 requisições por segundo.
-
-## Commit Style
+## Padrões de Commits
 
 - ⚙️ FEATURE
 - 📝 PEP8
@@ -39,6 +42,6 @@ Implementação de um `proxy de apis` com os seguintes requisitos:
 - ⬆️ CI/CD
 - ⚠️ SECURITY
 
-## License
+## Licença
 
-This project is licensed under the terms of the MIT license.
+Este projeto é licenciado sob os termos da licença MIT.
