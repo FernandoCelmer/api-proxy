@@ -31,7 +31,7 @@ class Settings:
             "DEBUG": bool(environ.get("DEBUG", 1)),
             "ENVIRONMENT": environ.get("ENVIRONMENT", 'development'),
             "BASE_DIR": path.abspath(path.dirname(__file__)),
-            "URL_PROYX": environ.get("URL_PROMETHEUS", 'http://172.16.238.10:8000'),
+            "URL_PROYX": environ.get("URL_PROYX", 'http://172.16.238.10:8000'),
             "URL_PROMETHEUS": environ.get("URL_PROMETHEUS", 'http://172.16.238.11:9090'),
         }
 
