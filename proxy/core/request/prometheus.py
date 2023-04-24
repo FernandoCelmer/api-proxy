@@ -16,7 +16,7 @@ class RequestPrometheus(BaseRequest):
         self.method = 'GET'
 
     def setup_url_target(self):
-        url_prometheus = self.config.get("URL_PROMETHEUS")
+        url_prometheus = self.config.get("url_prometheus")
         self.url_target = f"{url_prometheus}/api/v1/query"
 
     def setup_params(self, client=None, path=None):
