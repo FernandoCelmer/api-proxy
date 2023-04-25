@@ -1,0 +1,39 @@
+[
+	{
+		"_id": "644735d40918b66da11e8f7b",
+		"host": "gorest.co.in",
+		"scheme": "https",
+		"paths": [
+			{
+				"path": "/public/v2/users",
+				"target": "/public/v2/users",
+				"max_request": 10,
+				"time_stamp": 60
+			},
+			{
+				"path": "/public/v2/users/{ID}",
+				"target": "/public/v2/users/{ID}",
+				"max_request": 10,
+				"time_stamp": 60
+			},
+			{
+				"path": "/public/v2/posts",
+				"target": "/public/v2/posts",
+				"max_request": 5,
+				"time_stamp": 60
+			},
+			{
+				"path": "/public/v2/comments",
+				"target": "/public/v2/comments",
+				"max_request": 25,
+				"time_stamp": 60
+			},
+			{
+				"path": "/public/v2/todos",
+				"target": "/public/v2/todos",
+				"max_request": 50,
+				"time_stamp": 60
+			}
+		]
+	}
+]
