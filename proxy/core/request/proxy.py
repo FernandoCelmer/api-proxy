@@ -7,7 +7,7 @@ import logging
 from urllib.parse import parse_qs, urlsplit
 from fastapi.responses import JSONResponse, Response
 
-from proxy.core.error import ErrorValidateProxy
+from proxy.core.error import ErrorValidateProxy, ErrorProcessProxy
 from proxy.core.request import BaseRequest, RequestPrometheus
 from proxy.core.settings import Settings
 
@@ -97,12 +97,15 @@ class RequestProxy(BaseRequest):
             logging.error(error)
 
     def setup(self):
-        self.setup_client()
-        self.setup_url_proxy()
-        self.setup_url_target()
-        self.setup_headers()
-        self.setup_params()
-        self.setup_method()
+        try:
+            self.setup_client()
+            self.setup_url_proxy()
+            self.setup_url_target()
+            self.setup_headers()
+            self.setup_params()
+            self.setup_method()
+        except Exception:
+            raise ErrorProcessProxy()
 
     async def validate(self):
         if not self.client_path:

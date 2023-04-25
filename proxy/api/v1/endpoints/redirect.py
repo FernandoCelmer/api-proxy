@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Response, status
 from proxy.core.request.proxy import RequestProxy
+from proxy.core.error import ErrorProcessProxy
 
 router = APIRouter()
 
@@ -7,28 +8,48 @@ router = APIRouter()
 @router.get("/redirect", include_in_schema=False)
 async def proxy(request: Request):
     """GET Proxy"""
-    return await RequestProxy(request).get()
+    try:
+        return await RequestProxy(request).get()
+    except ErrorProcessProxy:
+        return Response(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 @router.post("/redirect", include_in_schema=False)
 async def post_proxy(request: Request):
     """POST Proxy"""
-    return await RequestProxy(request).post()
+    try:
+        return await RequestProxy(request).post()
+    except ErrorProcessProxy:
+        return Response(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 @router.put("/redirect", include_in_schema=False)
 async def put_proxy(request: Request):
     """PUT Proxy"""
-    return await RequestProxy(request).put()
+    try:
+        return await RequestProxy(request).put()
+    except ErrorProcessProxy:
+        return Response(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 @router.patch("/redirect", include_in_schema=False)
 async def patch_proxy(request: Request):
     """PATCH Proxy"""
-    return await RequestProxy(request).patch()
+    try:
+        return await RequestProxy(request).patch()
+    except ErrorProcessProxy:
+        return Response(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 @router.delete("/redirect", include_in_schema=False)
 async def delete_proxy(request: Request):
     """DELETE Proxy"""
-    return await RequestProxy(request).delete()
+    try:
+        return await RequestProxy(request).delete()
+    except ErrorProcessProxy:
+        return Response(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
