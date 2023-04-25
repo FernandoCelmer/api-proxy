@@ -1,5 +1,3 @@
-import logging
-
 import motor.motor_asyncio
 from bson import ObjectId
 from proxy.core.settings import Settings
