@@ -1,6 +1,19 @@
 [
 	{
-		"_id": "644735d40918b66da11e8f7b",
+		"_id": "64484b1f66f70bc58ac2b1dc",
+		"host": "reqres.in",
+		"scheme": "https",
+		"paths": [
+			{
+				"path": "/api/users",
+				"target": "/api/users",
+				"max_request": 10,
+				"time_stamp": 60
+			}
+		]
+	},
+	{
+		"_id": "64484b5c66f70bc58ac2b1de",
 		"host": "gorest.co.in",
 		"scheme": "https",
 		"paths": [

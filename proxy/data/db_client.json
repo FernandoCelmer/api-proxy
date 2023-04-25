@@ -1,39 +1,7 @@
 [
 	{
-		"_id": "644738b98986dd076e36b00e",
+		"_id": "64484bec66f70bc58ac2b1e1",
 		"user": "127.0.0.1",
-		"host": "gorest.co.in",
-		"paths": [
-			{
-				"path": "/public/v2/users",
-				"max_request": 10,
-				"time_stamp": 60
-			},
-			{
-				"path": "/public/v2/users/{ID}",
-				"max_request": 10,
-				"time_stamp": 60
-			},
-			{
-				"path": "/public/v2/posts",
-				"max_request": 5,
-				"time_stamp": 60
-			},
-			{
-				"path": "/public/v2/comments",
-				"max_request": 25,
-				"time_stamp": 60
-			},
-			{
-				"path": "/public/v2/todos",
-				"max_request": 50,
-				"time_stamp": 60
-			}
-		]
-	},
-	{
-		"_id": "64473eb575c48066cdba6891",
-		"user": "172.16.238.1",
 		"host": "gorest.co.in",
 		"paths": [
 			{
