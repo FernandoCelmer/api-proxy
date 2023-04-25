@@ -29,5 +29,16 @@
                 "time_stamp": 60
             }
         ]
+    },
+    "reqres.in": {
+        "scheme": "https",
+        "host": "reqres.in",
+        "paths": [
+            {
+                "path": "/api/users",
+                "max_request": 10,
+                "time_stamp": 60
+            }
+        ]
     }
 }
