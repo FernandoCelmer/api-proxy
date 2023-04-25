@@ -19,6 +19,16 @@
                     "time_stamp": 5
                 }    
             ]
+        },
+        {
+            "host": "reqres.in",
+            "paths": [
+                {
+                    "path": "/api/users",
+                    "max_request": 10,
+                    "time_stamp": 60
+                }
+            ]
         }
     ],
     "127.0.0.1": [
@@ -40,6 +50,16 @@
                     "max_request": 25,
                     "time_stamp": 5
                 }    
+            ]
+        },
+        {
+            "host": "reqres.in",
+            "paths": [
+                {
+                    "path": "/api/users",
+                    "max_request": 10,
+                    "time_stamp": 60
+                }
             ]
         }
     ]

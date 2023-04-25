@@ -1,13 +1,39 @@
 {
 	"info": {
-		"_postman_id": "083e381f-d8cb-431c-b3a3-ed0027549649",
+		"_postman_id": "82fb0cb3-34a4-4b07-b48d-c7d853afa8a6",
 		"name": "API-Proxy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23182560"
 	},
 	"item": [
 		{
-			"name": "Proxy",
+			"name": "Proxy - reqres.in",
+			"item": [
+				{
+					"name": "Users",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_proxy}}/api/users",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proxy - gorest.co.in",
 			"item": [
 				{
 					"name": "User ID",
