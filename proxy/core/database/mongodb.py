@@ -25,11 +25,4 @@ async def get_mongodb():
     config = Settings().load_variables()
     client = motor.motor_asyncio.AsyncIOMotorClient(
         config.get("nosql_database_url"))
-
-    try:
-        client.admin.command('ping')
-        print("Pinged your deployment. You successfully connected to MongoDB!")
-    except Exception as error:
-        logging.error(error)
-
     return client
