@@ -30,4 +30,4 @@ async def custom_http_exception_handler(request, exception):
         )
     )
     return RedirectResponse(
-        url=f"/proxy?{request.url.query}")
+        url=f"/redirect?{request.url.query}")
