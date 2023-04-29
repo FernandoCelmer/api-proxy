@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request, Response, status
 from proxy.core.request.proxy import RequestProxy
 from proxy.core.error import ErrorProcessProxy
+# from proxy.core.storage import Storage
 
 router = APIRouter()
 
@@ -9,6 +10,7 @@ router = APIRouter()
 async def proxy(request: Request):
     """GET Proxy"""
     try:
+        # data = await Storage(request=request).build()
         return await RequestProxy(request).get()
     except ErrorProcessProxy:
         return Response(
@@ -19,6 +21,7 @@ async def proxy(request: Request):
 async def post_proxy(request: Request):
     """POST Proxy"""
     try:
+        # data = await Storage(request=request).build()
         return await RequestProxy(request).post()
     except ErrorProcessProxy:
         return Response(
@@ -29,6 +32,7 @@ async def post_proxy(request: Request):
 async def put_proxy(request: Request):
     """PUT Proxy"""
     try:
+        # data = await Storage(request=request).build()
         return await RequestProxy(request).put()
     except ErrorProcessProxy:
         return Response(
@@ -39,6 +43,7 @@ async def put_proxy(request: Request):
 async def patch_proxy(request: Request):
     """PATCH Proxy"""
     try:
+        # data = await Storage(request=request).build()
         return await RequestProxy(request).patch()
     except ErrorProcessProxy:
         return Response(
@@ -49,6 +54,7 @@ async def patch_proxy(request: Request):
 async def delete_proxy(request: Request):
     """DELETE Proxy"""
     try:
+        # data = await Storage(request=request).build()
         return await RequestProxy(request).delete()
     except ErrorProcessProxy:
         return Response(
