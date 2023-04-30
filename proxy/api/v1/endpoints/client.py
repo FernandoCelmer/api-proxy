@@ -20,7 +20,7 @@ async def read(user: str, db=Depends(get_mongodb)):
 async def read_by_id(_id: str, db=Depends(get_mongodb)):
     if (response := await db.client["client"].find_one({"_id": _id})) is not None:
         return response
-    return Response(status_code=status.HTTP_409_CONFLICT)
+    return Response(status_code=status.HTTP_404_NOT_FOUND)
 
 
 @router.post("/client", response_model=SchemaClient, status_code=201)

@@ -20,7 +20,7 @@ async def read(host: str, client=Depends(get_mongodb)):
 async def read_by_id(_id: str, client=Depends(get_mongodb)):
     if (response := await client.proxy["proxy"].find_one({"_id": _id})) is not None:
         return response
-    return Response(status_code=status.HTTP_409_CONFLICT)
+    return Response(status_code=status.HTTP_404_NOT_FOUND)
 
 
 @router.post("/proxy", response_model=SchemaProxy, status_code=201)
