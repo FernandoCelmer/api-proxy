@@ -12,7 +12,6 @@ from proxy.core.error import (
 
 class Validate:
 
-
     def __init__(self, *args, **kwargs) -> None:
         self.action = RequestPrometheus()
         self.metric = {}
@@ -30,8 +29,8 @@ class Validate:
 
     async def setup_metric(self):
         metric = await self.action.get(
-                client=self.address_client,
-                path=self.client_path.get("path"))
+            client=self.address_client,
+            path=self.client_path.get("path"))
 
         self.metric = metric.json().get("data")
 

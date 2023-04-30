@@ -56,7 +56,7 @@ class Handler:
 
         except Exception:
             raise ErrorSetupStorage()
-    
+
     def setup_method(self):
         self.method = self.request.method
 

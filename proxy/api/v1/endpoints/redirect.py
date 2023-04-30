@@ -24,11 +24,11 @@ async def proxy(request: Request):
     except ErrorSetupStorage:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorSetupValidate:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorManyRequests:
         return Response(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS)
@@ -46,11 +46,11 @@ async def post_proxy(request: Request):
     except ErrorSetupStorage:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorSetupValidate:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorManyRequests:
         return Response(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS)
@@ -68,11 +68,11 @@ async def put_proxy(request: Request):
     except ErrorSetupStorage:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorSetupValidate:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorManyRequests:
         return Response(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS)
@@ -90,11 +90,11 @@ async def patch_proxy(request: Request):
     except ErrorSetupStorage:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorSetupValidate:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorManyRequests:
         return Response(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS)
@@ -112,11 +112,11 @@ async def delete_proxy(request: Request):
     except ErrorSetupStorage:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorSetupValidate:
         return Response(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
+
     except ErrorManyRequests:
         return Response(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS)
