@@ -1,8 +1,5 @@
 import logging
-
-from json import loads
 from os import environ, path
-from proxy.core.file import File
 
 
 class Settings:
@@ -13,15 +10,6 @@ class Settings:
             load_dotenv()
         except Exception as error:
             logging.error(error)
-
-    @staticmethod
-    def load_data():
-        """Sets up configuration for the app
-        """
-        return {
-            "proxy": loads(File.read(path_file=environ.get("PROXY", "./proxy/data/proxy.json"))),
-            "users": loads(File.read(path_file=environ.get("USERS", "./proxy/data/users.json"))),
-        }
 
     @staticmethod
     def load_variables():
