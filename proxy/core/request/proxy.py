@@ -26,18 +26,3 @@ class RequestProxy(BaseRequest):
         except Exception as error:
             logging.error(error)
             return Response(status_code=422)
-
-    async def get(self):
-        return await self.proxy_request()
-
-    async def post(self):
-        return await self.proxy_request()
-
-    async def put(self):
-        return await self.proxy_request()
-
-    async def patch(self):
-        return await self.proxy_request()
-
-    async def delete(self):
-        return await self.proxy_request()
