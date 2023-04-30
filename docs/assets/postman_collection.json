@@ -1,39 +1,13 @@
 {
 	"info": {
-		"_postman_id": "82fb0cb3-34a4-4b07-b48d-c7d853afa8a6",
+		"_postman_id": "083e381f-d8cb-431c-b3a3-ed0027549649",
 		"name": "API-Proxy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23182560"
 	},
 	"item": [
 		{
-			"name": "Proxy - reqres.in",
-			"item": [
-				{
-					"name": "Users",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url_proxy}}/api/users",
-							"host": [
-								"{{url_proxy}}"
-							],
-							"path": [
-								"api",
-								"users"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Proxy - gorest.co.in",
+			"name": "Redirect - gorest.co.in",
 			"item": [
 				{
 					"name": "User ID",
@@ -44,7 +18,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url_proxy}}/public/v2/users/1159566",
+							"raw": "{{url_proxy}}/public/v2/users/{{ID}}",
 							"host": [
 								"{{url_proxy}}"
 							],
@@ -52,7 +26,7 @@
 								"public",
 								"v2",
 								"users",
-								"1159566"
+								"{{ID}}"
 							]
 						}
 					},
@@ -159,7 +133,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Acharyasuta Acharya\",\n    \"email\": \"acharya_acharyasuta@email.test\",\n    \"gender\": \"female\",\n    \"status\": \"inactive\"\n}",
+							"raw": "{\n    \"name\": \"Acharyasuta Acharya\",\n    \"email\": \"acharya_acharyasuta@email.tests\",\n    \"gender\": \"female\",\n    \"status\": \"inactive\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,7 +224,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Allasani Peddana\",\n    \"email\": \"allasani.peddana@15ce.com\",\n    \"status\": \"active\"\n}",
+							"raw": "{\n    \"name\": \"Allasani Peddana\",\n    \"email\": \"allasani.pdeddana@15ce.com\",\n    \"status\": \"active\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -258,7 +232,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url_proxy}}/public/v2/users/1159528",
+							"raw": "{{url_proxy}}/public/v2/users/1300602",
 							"host": [
 								"{{url_proxy}}"
 							],
@@ -266,7 +240,7 @@
 								"public",
 								"v2",
 								"users",
-								"1159528"
+								"1300602"
 							]
 						}
 					},
@@ -351,7 +325,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url_proxy}}/public/v2/users/1159528",
+							"raw": "{{url_proxy}}/public/v2/users/{{ID}}",
 							"host": [
 								"{{url_proxy}}"
 							],
@@ -359,7 +333,33 @@
 								"public",
 								"v2",
 								"users",
-								"1159528"
+								"{{ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Redirect - reqres.in",
+			"item": [
+				{
+					"name": "Users",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_proxy}}/api/users",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"api",
+								"users"
 							]
 						}
 					},
@@ -376,7 +376,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url_prometheus}}/api/v1/query?query=get_total{job=\"proxy-api\", client=\"172.16.238.1\", path=\"/public/v2/comments\"}",
+							"raw": "{{url_prometheus}}/api/v1/query?query=user_total{job=\"proxy-api\", client=\"172.16.238.1\"}",
 							"host": [
 								"{{url_prometheus}}"
 							],
@@ -388,12 +388,12 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "get_total{job=\"proxy-api\", client=\"172.16.238.1\", path=\"/public/v2/comments\"}"
+									"value": "user_total{job=\"proxy-api\", client=\"172.16.238.1\", path=\"/public/v2/comments\"}",
+									"disabled": true
 								},
 								{
-									"key": "path",
-									"value": "/public/v2/comments",
-									"disabled": true
+									"key": "query",
+									"value": "user_total{job=\"proxy-api\", client=\"172.16.238.1\"}"
 								}
 							]
 						}
@@ -511,6 +511,332 @@
 			]
 		},
 		{
+			"name": "Proxy",
+			"item": [
+				{
+					"name": "Proxy ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"http\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy/644734e9c31768a1dd514db6",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy",
+								"644734e9c31768a1dd514db6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy?host=gorest.co.in",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy"
+							],
+							"query": [
+								{
+									"key": "host",
+									"value": "gorest.co.in"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy - reqres.in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"reqres.in\",\n    \"scheme\": \"https\",\n    \"paths\": [\n        {\n            \"target\": \"/api/users\",\n            \"path\": \"/api/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy - gorest.co.in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"https\",\n    \"paths\": [\n        {\n            \"target\": \"/public/v2/users\",\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"target\": \"/public/v2/users/{ID}\",\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"target\": \"/public/v2/posts\",\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"target\": \"/public/v2/comments\",\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"target\": \"/public/v2/todos\",\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"http\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy/644734e9c31768a1dd514db6",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy",
+								"644734e9c31768a1dd514db6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"http\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/proxy/644734e9c31768a1dd514db6",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"proxy",
+								"644734e9c31768a1dd514db6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Proxy ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"http\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/client/644734e9c31768a1dd514db6",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"client",
+								"644734e9c31768a1dd514db6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/client?user=172.16.238.1",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"client"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "172.16.238.1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"172.16.238.1\",\n    \"host\": \"gorest.co.in\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/client",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"user\": \"172.16.238.1\",\n        \"host\": \"gorest.co.in\",\n        \"paths\": [\n            {\n                \"path\": \"/public/v2/users\",\n                \"max_request\": 10,\n                \"time_stamp\": 60\n            },\n            {\n                \"path\": \"/public/v2/users/{ID}\",\n                \"max_request\": 10,\n                \"time_stamp\": 60\n            },\n            {\n                \"path\": \"/public/v2/posts\",\n                \"max_request\": 5,\n                \"time_stamp\": 60\n            },\n            {\n                \"path\": \"/public/v2/comments\",\n                \"max_request\": 25,\n                \"time_stamp\": 60\n            }\n        ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/client/644de3ba26ab26c87baec481",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"client",
+								"644de3ba26ab26c87baec481"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Proxy ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"host\": \"gorest.co.in\",\n    \"scheme\": \"http\",\n    \"paths\": [\n        {\n            \"path\": \"/public/v2/users\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/users/{ID}\",\n            \"max_request\": 10,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/posts\",\n            \"max_request\": 5,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/comments\",\n            \"max_request\": 25,\n            \"time_stamp\": 60\n        },\n        {\n            \"path\": \"/public/v2/todos\",\n            \"max_request\": 50,\n            \"time_stamp\": 60\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_proxy}}/client/644734e9c31768a1dd514db6",
+							"host": [
+								"{{url_proxy}}"
+							],
+							"path": [
+								"client",
+								"644734e9c31768a1dd514db6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Metrics",
 			"request": {
 				"method": "GET",
@@ -528,17 +854,17 @@
 			"response": []
 		},
 		{
-			"name": "Client",
+			"name": "Host",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url_proxy}}/client",
+					"raw": "{{url_proxy}}/host",
 					"host": [
 						"{{url_proxy}}"
 					],
 					"path": [
-						"client"
+						"host"
 					]
 				}
 			},
