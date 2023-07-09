@@ -26,9 +26,10 @@
 
 ## Melhorias
 
-- [📌 ISSUE-3: Add Docstring to classes and functions to improve understanding](https://github.com/FernandoCelmer/api-proxy/issues/3)
-- [📌 ISSUE-2: Create unit tests](https://github.com/FernandoCelmer/api-proxy/issues/2)
-- [📌 ISSUE-1: Implement required features for MongoDB database](https://github.com/FernandoCelmer/api-proxy/issues/1)
+- [x] [📌 ISSUE-7: Create User and Endpoint Validation with MongoDB](https://github.com/FernandoCelmer/api-proxy/issues/7)
+- [ ] [📌 ISSUE-3: Add Docstring to classes and functions to improve understanding](https://github.com/FernandoCelmer/api-proxy/issues/3)
+- [ ] [📌 ISSUE-2: Create unit tests](https://github.com/FernandoCelmer/api-proxy/issues/2)
+- [x] [📌 ISSUE-1: Implement required features for MongoDB database](https://github.com/FernandoCelmer/api-proxy/issues/1)
 
 ## Padrões de Commits
 
