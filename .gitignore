@@ -164,3 +164,4 @@ text
 
 # Database
 *.sqlite3
+/data

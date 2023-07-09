@@ -41,5 +41,5 @@ async def root():
 ## Filtro
 
 ```
-get_total{job="proxy-api", client="172.16.238.1"}
+user_total{job="proxy-api", client="172.16.238.1"}
 ```

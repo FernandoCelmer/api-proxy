@@ -20,6 +20,7 @@ nav:
       - nav/settings/environment-variables.md
     - Monitoramento:
       - nav/monitoring/prometheus.md
+    - Release Notes: release-notes.md
 
 theme:
     name: material

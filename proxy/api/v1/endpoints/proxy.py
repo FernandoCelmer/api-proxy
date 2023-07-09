@@ -1,34 +1,58 @@
-from fastapi import APIRouter, Request
-from proxy.core.request.proxy import RequestProxy
+from fastapi import APIRouter, Depends, Body, status
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import Response
+
+from proxy.core.database.mongodb import get_mongodb
+from proxy.schemas.proxy import SchemaProxy, SchemaProxyBase
+
 
 router = APIRouter()
 
 
-@router.get("/proxy", include_in_schema=False)
-async def proxy(request: Request):
-    """GET Proxy"""
-    return await RequestProxy(request).get()
+@router.get("/proxy", response_model=SchemaProxy, status_code=200)
+async def read(host: str, client=Depends(get_mongodb)):
+    if (response := await client.proxy["proxy"].find_one({"host": host})) is not None:
+        return response
+    return Response(status_code=status.HTTP_404_NOT_FOUND)
 
 
-@router.post("/proxy", include_in_schema=False)
-async def post_proxy(request: Request):
-    """POST Proxy"""
-    return await RequestProxy(request).post()
+@router.get("/proxy/{_id}", response_model=SchemaProxy, status_code=200)
+async def read_by_id(_id: str, client=Depends(get_mongodb)):
+    if (response := await client.proxy["proxy"].find_one({"_id": _id})) is not None:
+        return response
+    return Response(status_code=status.HTTP_404_NOT_FOUND)
 
 
-@router.put("/proxy", include_in_schema=False)
-async def put_proxy(request: Request):
-    """PUT Proxy"""
-    return await RequestProxy(request).put()
+@router.post("/proxy", response_model=SchemaProxy, status_code=201)
+async def create(proxy: SchemaProxy = Body(...), client=Depends(get_mongodb)):
+    proxy = jsonable_encoder(proxy)
+
+    if (await client.proxy["proxy"].find_one({"host": proxy.get("host")})) is not None:
+        return Response(status_code=status.HTTP_409_CONFLICT)
+
+    try:
+        collection = client.proxy["proxy"]
+        await collection.insert_one(proxy)
+    except Exception:
+        return Response(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+    return proxy
 
 
-@router.patch("/proxy", include_in_schema=False)
-async def patch_proxy(request: Request):
-    """PATCH Proxy"""
-    return await RequestProxy(request).patch()
+@router.put("/proxy/{_id}", response_model=SchemaProxy)
+async def update(_id: str, proxy: SchemaProxyBase = Body(...), client=Depends(get_mongodb)):
+    proxy = jsonable_encoder(proxy)
+
+    if (await client.proxy["proxy"].find_one({"_id": _id})) is not None:
+        await client.proxy["proxy"].update_one({"_id": _id}, {"$set": proxy})
+        proxy["_id"] = _id
+        return proxy
+    return Response(status_code=status.HTTP_409_CONFLICT)
 
 
-@router.delete("/proxy", include_in_schema=False)
-async def delete_proxy(request: Request):
-    """DELETE Proxy"""
-    return await RequestProxy(request).delete()
+@router.delete("/proxy/{_id}")
+async def delete(_id: str, client=Depends(get_mongodb)):
+    delete_result = await client.proxy["proxy"].delete_one({"_id": _id})
+
+    if delete_result.deleted_count == 1:
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    raise Response(status_code=status.HTTP_404_NOT_FOUND)

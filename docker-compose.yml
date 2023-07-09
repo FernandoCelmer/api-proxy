@@ -14,6 +14,8 @@ services:
     networks:
       node-network:
         ipv4_address: 172.16.238.10
+    depends_on:
+      - mongodb
 
   prometheus:
     image: prom/prometheus:latest
@@ -28,6 +30,26 @@ services:
     networks:
       node-network:
         ipv4_address: 172.16.238.11
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    logging:
+      options:
+          max-size: 1g
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
+    networks:
+      node-network:
+        ipv4_address: 172.16.238.12
 
 networks:
   node-network:
